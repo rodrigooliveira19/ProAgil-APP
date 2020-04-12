@@ -17,7 +17,7 @@ export class EventosComponent implements OnInit {
   }
 
   getEventos(){
-    this.eventos = this.http.get("http://localhost:5000/WeatherForecast/1").
+    this.http.get("http://localhost:5000/WeatherForecast").
     subscribe(response => {this.eventos = response
     console.log(response)},
       
