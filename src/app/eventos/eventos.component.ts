@@ -9,11 +9,18 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 export class EventosComponent implements OnInit {
 
   eventos : any = []; 
+  imagemLargura = 50; 
+  imagemMargem = 2; 
+  isMostrarImagem = false; 
    
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getEventos(); 
+  }
+
+  alternarImagem(){
+    this.isMostrarImagem = !this.isMostrarImagem; 
   }
 
   getEventos(){
@@ -24,13 +31,6 @@ export class EventosComponent implements OnInit {
       error =>{
         console.log(Error);
       }); 
-
-      /*
-      this.eventos = this.http.get("http://localhost:5000/WeatherForecast/2")
-      .subscribe((data) => this.eventos = {
-        tema: data['tema'],
-        local:  data['local']
-    });*/ 
   }
 
 }
