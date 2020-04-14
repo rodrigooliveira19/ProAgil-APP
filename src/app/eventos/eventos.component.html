@@ -29,4 +29,12 @@
         <td></td>
       </tr>
     </tbody>
+    <tfoot *ngIf="!eventos.length">
+      <tr>
+        <td colspan="7" class="text-center">
+          <h3>Nenhum Evento encontrado!</h3>
+        </td>
+      </tr>
+    </tfoot>
   </table>
+  
