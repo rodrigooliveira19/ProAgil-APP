@@ -12,11 +12,31 @@ export class EventosComponent implements OnInit {
   imagemLargura = 50; 
   imagemMargem = 2; 
   isMostrarImagem = false; 
+  
+  /*Implementando o pipe*/
+  _filtroLista: string = "";
+  eventosFiltrados: any = []; 
+  
+  get filtroLista(): string{
+    return this._filtroLista; 
+  }
+
+  set filtroLista(value: string){
+    this._filtroLista = value; 
+    this.eventosFiltrados = this.filtroLista ? this.filtrarEvento(this.filtroLista) : this.eventos;
+  }
    
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getEventos(); 
+  }
+
+  filtrarEvento(filtrarPor: string): any{
+    filtrarPor = filtrarPor.toLocaleLowerCase(); 
+    return this.eventos.filter(
+      evento => evento.tema.toLocaleLowerCase().indexOf(filtrarPor) !== -1
+    ); 
   }
 
   alternarImagem(){
